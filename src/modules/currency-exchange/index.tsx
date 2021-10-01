@@ -1,7 +1,11 @@
-import React, { FC, FormEvent } from 'react';
+import React, {
+  FC, FormEvent, useEffect, useState,
+} from 'react';
 import styled from 'styled-components';
 import EditableCurrency from './editable-currency';
 import { Currency } from './types';
+import ExchangeToggle from './exchange-toggle';
+import ExchangeRatesService from '../../services/ExchangeRatesService';
 
 const Wrapper = styled.div`
   display: flex;
@@ -9,18 +13,21 @@ const Wrapper = styled.div`
   padding: 24px 32px;
 `;
 
-const SellBuyToggle = styled.div`
-  margin-bottom: 24px;
+const Form = styled.form`
+  display: flex;
+  flex-direction: column;
+`;
+
+const CurrenciesWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 `;
 
 const SubmitButtonWrapper = styled.div`
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 100%;
   display: flex;
   justify-content: center;
-  padding: 24px 32px;
+  margin-top: 48px;
   box-sizing: border-box;
 `;
 
@@ -32,7 +39,6 @@ const SubmitButton = styled.button`
   background-color: ${({ theme }) => theme.colors.accent};
   color: ${({ theme }) => theme.colors.secondaryText};
   padding: 24px;
-  width: 100%;
   border-radius: 12px;
   font-size: 16px;
   font-family: 'nunito', sans-serif;
@@ -48,15 +54,18 @@ const ExchangeRate = styled.div`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.accent};
   font-weight: bold;
-  text-align: right;
+  text-align: left;
+  margin-bottom: 16px;
 `;
 
 const CurrencyExchange: FC = () => {
+  const [exchangeRates, setExchangeRates] = useState<Currency[]>([]);
+
   const firstCurrency: Currency = {
     abbreviation: 'JPY',
     symbol: '¥',
-    name: 'yen',
     value: '125',
+    rate: 1.2,
   };
 
   const accountBalance1 = '456.34';
@@ -65,29 +74,54 @@ const CurrencyExchange: FC = () => {
   const secondCurrency: Currency = {
     abbreviation: 'USD',
     symbol: '$',
-    name: 'dollar',
     value: '1500',
+    rate: 1.14,
   };
 
   const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
 
+  useEffect(() => {
+    async function fetchRates() {
+      const result = await ExchangeRatesService.fetchRates('EUR');
+      setExchangeRates(result);
+    }
+    fetchRates();
+  }, []);
+
+  useEffect(() => {
+    // eslint-disable-next-line no-console
+    console.log('exchangeRates', exchangeRates);
+  }, [exchangeRates]);
+
   return (
     <Wrapper>
-      <SellBuyToggle>Sell or Buy</SellBuyToggle>
-      <form onSubmit={handleFormSubmit}>
-        <EditableCurrency currency={firstCurrency} balance={accountBalance1} />
-        <EditableCurrency currency={secondCurrency} balance={accountBalance2} />
-        <ExchangeRate>
-          1
-          {firstCurrency.symbol}
-          {' '}
-          =
-          {' '}
-          {secondCurrency.symbol}
-          0.4
-        </ExchangeRate>
+      <ExchangeToggle currency={firstCurrency} isSellActive />
+      <ExchangeRate>
+        Exchange rate:
+        {' '}
+        1
+        {firstCurrency.symbol}
+        {' '}
+        =
+        {' '}
+        {secondCurrency.symbol}
+        0.4
+      </ExchangeRate>
+      <Form onSubmit={handleFormSubmit}>
+        <CurrenciesWrapper>
+          <EditableCurrency
+            currency={firstCurrency}
+            balance={accountBalance1}
+            exchangeRates={exchangeRates}
+          />
+          <EditableCurrency
+            currency={secondCurrency}
+            balance={accountBalance2}
+            exchangeRates={exchangeRates}
+          />
+        </CurrenciesWrapper>
         <SubmitButtonWrapper>
           <SubmitButton type="submit">
             Sell
@@ -99,7 +133,7 @@ const CurrencyExchange: FC = () => {
             {secondCurrency.abbreviation}
           </SubmitButton>
         </SubmitButtonWrapper>
-      </form>
+      </Form>
     </Wrapper>
   );
 };

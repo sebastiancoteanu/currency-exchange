@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import InputValue from './InputValue';
 import { Currency } from '../types';
+import SelectCurrency from './SelectCurrency';
 
 const Wrapper = styled.div`
   max-width: 100%;
@@ -12,7 +13,7 @@ const Wrapper = styled.div`
   border-radius: 12px;
 
   &:not(:last-child) {
-    margin-bottom: 16px;
+    margin-right: 40px;
   }
 `;
 
@@ -42,12 +43,6 @@ const AbbreviationBalanceWrapper = styled.div`
   align-items: flex-start;
 `;
 
-const Abbreviation = styled.div`
-  color: ${({ theme }) => theme.colors.primaryText};
-  font-size: 24px;
-  cursor: pointer;
-`;
-
 const AccountBalance = styled.div`
   color: ${({ theme }) => theme.colors.infoText};
   font-size: 12px;
@@ -58,14 +53,15 @@ const AccountBalance = styled.div`
 interface Props {
   currency: Currency;
   balance: string;
+  exchangeRates: Currency[];
 }
 
-const EditableCurrency: FC<Props> = ({ currency, balance }) => (
+const EditableCurrency: FC<Props> = ({ currency, balance, exchangeRates }) => (
   <Wrapper>
     <CurrencyStats>
       <Symbol>{currency.symbol}</Symbol>
       <AbbreviationBalanceWrapper>
-        <Abbreviation>{currency.abbreviation}</Abbreviation>
+        <SelectCurrency options={exchangeRates} currency={currency} />
         <AccountBalance>
           Balance:
           {' '}
@@ -73,7 +69,7 @@ const EditableCurrency: FC<Props> = ({ currency, balance }) => (
         </AccountBalance>
       </AbbreviationBalanceWrapper>
     </CurrencyStats>
-    <InputValue value={currency.value} name={currency.name} />
+    <InputValue value={currency.value} name={currency.abbreviation} />
   </Wrapper>
 );
 
