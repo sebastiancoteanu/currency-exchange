@@ -6,13 +6,13 @@ import { useDispatch, useSelector } from 'react-redux';
 import ExchangeToggle from './exchange-toggle';
 import { IRootState } from '../../shared/reducers';
 import {
-  getExchangeCurrencies,
   setFirstComparingCurrency,
   setSecondComparingCurrency,
 } from './currency-exchange.reducer';
 import { getUserCurrencies } from '../user-account/user-account.reducer';
 import ExchangeForm from './exchange-form';
 import ExchangeRate from './exchange-rate';
+import useExchangeRatesPolling from './useExchangeRatesPolling';
 
 const Wrapper = styled.div`
   display: flex;
@@ -43,14 +43,6 @@ const CurrencyExchange: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  // fetch rates based after first user currencies fetch
-  useEffect(() => {
-    if (userCurrencies.length && !exchangeCurrencies.length) {
-      dispatch(getExchangeCurrencies(userCurrencies[0].abbreviation));
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userCurrencies]);
-
   // populate select components with first two user account options;
   // assume that he needs at least one to access the app
   useEffect(() => {
@@ -65,13 +57,15 @@ const CurrencyExchange: FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [userCurrencies, exchangeCurrencies]);
 
+  useExchangeRatesPolling();
+
   if (!exchangeCurrencies.length || !userCurrencies.length) {
     return null;
   }
 
   return (
     <Wrapper>
-      <ExchangeToggle currency={firstComparingCurrency} isSellActive />
+      <ExchangeToggle />
       <ExchangeRate />
       <ExchangeForm />
     </Wrapper>

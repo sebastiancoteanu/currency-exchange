@@ -32,5 +32,3 @@ export type FetchedExchangeRates = Record<string, number>;
 
 export type GetExchangeCurrenciesAction =
   (currencyAbbreviation: string) => Payload<Currency[]> | ((dispatch: Dispatch) => Payload<Currency[]>);
-
-export type SetComparingCurrencyAction = (currency: Currency) => Payload<Currency>;

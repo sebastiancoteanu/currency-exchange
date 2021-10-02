@@ -1,16 +1,13 @@
-import {
-  Currency,
-  GetExchangeCurrenciesAction,
-  SetComparingCurrencyAction,
-} from './types';
-import ExchangeRatesService from '../../services/ExchangeRatesService';
+import { Currency } from './types';
 import { FAILURE, REQUEST, SUCCESS } from '../../shared/reducers/action-type.util';
 import { getCurrencyRateByAbbreviation } from '../../shared/utils/currency-calculations';
+import { BaseAction } from '../../shared/reducers/types';
 
 export const ACTION_TYPES = {
   FETCH_EXCHANGE_CURRENCIES: 'currencyExchange/FETCH_EXCHANGE_CURRENCIES',
   SET_FIRST_COMPARING_CURRENCY: 'currencyExchange/SET_FIRST_COMPARING_CURRENCY',
   SET_SECOND_COMPARING_CURRENCY: 'currencyExchange/SET_SECOND_COMPARING_CURRENCY',
+  SET_IS_SELL_ACTIVE: 'currencyExchange/SET_IS_SELL_ACTIVE',
 };
 
 const initialState = {
@@ -19,6 +16,7 @@ const initialState = {
   exchangeCurrencies: [] as ReadonlyArray<Currency>,
   firstComparingCurrency: {} as Readonly<Currency>,
   secondComparingCurrency: {} as Readonly<Currency>,
+  isSellActive: true,
 };
 
 export type CurrencyExchangeState = Readonly<typeof initialState>;
@@ -67,22 +65,35 @@ export default (state: CurrencyExchangeState = initialState, action: any): Curre
           ),
         },
       };
+    case ACTION_TYPES.SET_IS_SELL_ACTIVE:
+      return {
+        ...state,
+        isSellActive: action.payload,
+        firstComparingCurrency: {
+          ...state.firstComparingCurrency,
+          ...state.secondComparingCurrency,
+        },
+        secondComparingCurrency: {
+          ...state.secondComparingCurrency,
+          ...state.firstComparingCurrency,
+        },
+      };
     default:
       return state;
   }
 };
 
-export const getExchangeCurrencies: GetExchangeCurrenciesAction = (currencyAbbreviation) => ({
-  type: ACTION_TYPES.FETCH_EXCHANGE_CURRENCIES,
-  payload: ExchangeRatesService.fetchRates(currencyAbbreviation),
-});
-
-export const setFirstComparingCurrency: SetComparingCurrencyAction = (currency) => ({
+export const setFirstComparingCurrency: BaseAction<Currency> = (currency) => ({
   type: ACTION_TYPES.SET_FIRST_COMPARING_CURRENCY,
   payload: currency,
 });
 
-export const setSecondComparingCurrency: SetComparingCurrencyAction = (currency) => ({
+export const setSecondComparingCurrency: BaseAction<Currency> = (currency) => ({
   type: ACTION_TYPES.SET_SECOND_COMPARING_CURRENCY,
   payload: currency,
+});
+
+export const setIsSellActive: BaseAction<boolean> = (isSellActive) => ({
+  type: ACTION_TYPES.SET_IS_SELL_ACTIVE,
+  payload: isSellActive,
 });

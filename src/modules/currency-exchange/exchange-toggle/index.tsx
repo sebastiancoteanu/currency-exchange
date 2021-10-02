@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import { Currency } from '../types';
+import { useDispatch, useSelector } from 'react-redux';
+import { IRootState } from '../../../shared/reducers';
+import { setIsSellActive } from '../currency-exchange.reducer';
 
 const Wrapper = styled.div`
   margin-bottom: 16px;
@@ -28,18 +30,26 @@ const CurrencyAbbreviation = styled.span`
   font-size: 12px;
 `;
 
-interface Props {
-  currency: Currency;
-  isSellActive: boolean;
-}
+const ExchangeToggle: FC = () => {
+  const {
+    isSellActive,
+    firstComparingCurrency,
+  } = useSelector<IRootState, IRootState['currencyExchange']>(
+    (state) => state.currencyExchange,
+  );
 
-const ExchangeToggle: FC<Props> = ({ currency, isSellActive }) => (
-  <Wrapper>
-    <Option active={isSellActive}>Sell</Option>
-    <OptionSeparator>/</OptionSeparator>
-    <Option active={!isSellActive}>Buy</Option>
-    <CurrencyAbbreviation>{currency.abbreviation}</CurrencyAbbreviation>
-  </Wrapper>
-);
+  const dispatch = useDispatch();
+
+  const toggleIsSellActive = (isActive: boolean) => isActive !== isSellActive && dispatch(setIsSellActive(isActive));
+
+  return (
+    <Wrapper>
+      <Option active={isSellActive} onClick={() => toggleIsSellActive(true)}>Sell</Option>
+      <OptionSeparator>/</OptionSeparator>
+      <Option active={!isSellActive} onClick={() => toggleIsSellActive(false)}>Buy</Option>
+      <CurrencyAbbreviation>{firstComparingCurrency.abbreviation}</CurrencyAbbreviation>
+    </Wrapper>
+  );
+};
 
 export default ExchangeToggle;

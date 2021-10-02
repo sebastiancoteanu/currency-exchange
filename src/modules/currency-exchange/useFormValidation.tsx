@@ -11,34 +11,38 @@ interface ReturnData {
 type Hook = () => ReturnData;
 
 const useFormValidation: Hook = () => {
-  const {
-    formData,
-  } = useSelector<IRootState, IRootState['exchangeForm']>(
+  const { formData } = useSelector<IRootState, IRootState['exchangeForm']>(
     (state) => state.exchangeForm,
+  );
+
+  const { isSellActive } = useSelector<IRootState, IRootState['currencyExchange']>(
+    (state) => state.currencyExchange,
   );
 
   const dispatch = useDispatch();
 
-  const {
-    secondComparingCurrency,
-  } = useSelector<IRootState, IRootState['currencyExchange']>(
-    (state) => state.currencyExchange,
-  );
-
-  const { totalFirstCurrencyBalance } = useAccountBalance();
+  const { totalFirstCurrencyBalance, totalSecondCurrencyBalance } = useAccountBalance();
 
   const validateForm: ReturnData['validateForm'] = () => {
-    const exchangeRate = secondComparingCurrency.rate as number;
     const firstInputValue = Number(formData[FormInputNames.FIRST_COMPARING_CURRENCY]);
+    const secondInputValue = Number(formData[FormInputNames.SECOND_COMPARING_CURRENCY]);
 
-    if (!firstInputValue) {
-      dispatch(setFormError({ submitDisabled: true }));
+    if (!firstInputValue || !secondInputValue) {
+      dispatch(setFormError({ submitDisabled: true, errorMessage: '' }));
       return;
     }
 
-    if (exchangeRate * firstInputValue > totalFirstCurrencyBalance) {
+    if (isSellActive && firstInputValue > totalFirstCurrencyBalance) {
       dispatch(setFormError({ submitDisabled: true, errorMessage: 'Amount exceeded' }));
+      return;
     }
+
+    if (!isSellActive && secondInputValue > totalSecondCurrencyBalance) {
+      dispatch(setFormError({ submitDisabled: true, errorMessage: 'Amount exceeded' }));
+      return;
+    }
+
+    dispatch(setFormError({ submitDisabled: false, errorMessage: '' }));
   };
 
   return {
