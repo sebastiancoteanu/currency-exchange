@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61f0bddb-bf99-4679-8a25-028a42691a0f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/SubmitButton.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/useFormSubmit.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/modules/currency-exchange/useExchangeRatesPolling.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/constants.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/constants.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/currency-exchange.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/currency-exchange.reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/editable-currency/InputValue.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/editable-currency/InputValue.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-toggle/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-toggle/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/useFormValidation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/useFormValidation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,7 +49,7 @@
       <option name="presentableId" value="Default" />
       <updated>1632991469110</updated>
       <workItem from="1632991470863" duration="2355000" />
-      <workItem from="1633004084479" duration="102471000" />
+      <workItem from="1633004084479" duration="104161000" />
     </task>
     <servers />
   </component>
