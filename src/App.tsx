@@ -1,26 +1,21 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { FC } from 'react';
 import './App.css';
+import { ThemeProvider } from 'styled-components';
+import { Provider } from 'react-redux';
+import CurrencyExchange from './modules/currency-exchange';
+import lightTheme from './theme/lightTheme';
+import initialize from './config/store';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+const store = initialize();
+
+const App: FC = () => (
+  <div className="App">
+    <Provider store={store}>
+      <ThemeProvider theme={lightTheme}>
+        <CurrencyExchange />
+      </ThemeProvider>
+    </Provider>
+  </div>
+);
 
 export default App;
