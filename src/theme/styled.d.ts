@@ -10,6 +10,7 @@ declare module 'styled-components' {
       secondaryText: string;
       infoText: string;
       boxShadow: string;
+      error: string;
     };
   }
 }

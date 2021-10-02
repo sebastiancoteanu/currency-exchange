@@ -1,8 +1,11 @@
+import { Dispatch } from 'redux';
+import { Payload } from '../../shared/reducers/types';
+
 export interface Currency {
   symbol: CurrencySymbol;
   abbreviation: string;
-  value: string;
-  rate: number;
+  value: number;
+  rate?: number;
 }
 
 export type CurrencySymbol = SupportedCurrencySymbols | string;
@@ -26,3 +29,8 @@ export enum SupportedCurrencySymbols {
 }
 
 export type FetchedExchangeRates = Record<string, number>;
+
+export type GetExchangeCurrenciesAction =
+  (currencyAbbreviation: string) => Payload<Currency[]> | ((dispatch: Dispatch) => Payload<Currency[]>);
+
+export type SetComparingCurrencyAction = (currency: Currency) => Payload<Currency>;

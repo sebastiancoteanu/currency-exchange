@@ -1,11 +1,18 @@
 import React, {
-  FC, FormEvent, useEffect, useState,
+  FC, useEffect,
 } from 'react';
 import styled from 'styled-components';
-import EditableCurrency from './editable-currency';
-import { Currency } from './types';
+import { useDispatch, useSelector } from 'react-redux';
 import ExchangeToggle from './exchange-toggle';
-import ExchangeRatesService from '../../services/ExchangeRatesService';
+import { IRootState } from '../../shared/reducers';
+import {
+  getExchangeCurrencies,
+  setFirstComparingCurrency,
+  setSecondComparingCurrency,
+} from './currency-exchange.reducer';
+import { getUserCurrencies } from '../user-account/user-account.reducer';
+import ExchangeForm from './exchange-form';
+import ExchangeRate from './exchange-rate';
 
 const Wrapper = styled.div`
   display: flex;
@@ -13,127 +20,60 @@ const Wrapper = styled.div`
   padding: 24px 32px;
 `;
 
-const Form = styled.form`
-  display: flex;
-  flex-direction: column;
-`;
-
-const CurrenciesWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-`;
-
-const SubmitButtonWrapper = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-top: 48px;
-  box-sizing: border-box;
-`;
-
-const SubmitButton = styled.button`
-  border: none;
-  outline: none;
-  appearance: none;
-  cursor: pointer;
-  background-color: ${({ theme }) => theme.colors.accent};
-  color: ${({ theme }) => theme.colors.secondaryText};
-  padding: 24px;
-  border-radius: 12px;
-  font-size: 16px;
-  font-family: 'nunito', sans-serif;
-  transition: all 0.1s ease-in;
-  opacity: 1;
-  
-  &:hover {
-    opacity: 0.8;
-  }
-`;
-
-const ExchangeRate = styled.div`
-  font-size: 14px;
-  color: ${({ theme }) => theme.colors.accent};
-  font-weight: bold;
-  text-align: left;
-  margin-bottom: 16px;
-`;
-
 const CurrencyExchange: FC = () => {
-  const [exchangeRates, setExchangeRates] = useState<Currency[]>([]);
+  const {
+    exchangeCurrencies,
+    firstComparingCurrency,
+    secondComparingCurrency,
+  } = useSelector<IRootState, IRootState['currencyExchange']>(
+    (state) => state.currencyExchange,
+  );
 
-  const firstCurrency: Currency = {
-    abbreviation: 'JPY',
-    symbol: '¥',
-    value: '125',
-    rate: 1.2,
-  };
+  const {
+    userCurrencies,
+  } = useSelector<IRootState, IRootState['userAccount']>(
+    (state) => state.userAccount,
+  );
 
-  const accountBalance1 = '456.34';
-  const accountBalance2 = '120.50';
+  const dispatch = useDispatch();
 
-  const secondCurrency: Currency = {
-    abbreviation: 'USD',
-    symbol: '$',
-    value: '1500',
-    rate: 1.14,
-  };
-
-  const handleFormSubmit = (e: FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-  };
-
+  // fetch user currencies on mount
   useEffect(() => {
-    async function fetchRates() {
-      const result = await ExchangeRatesService.fetchRates('EUR');
-      setExchangeRates(result);
-    }
-    fetchRates();
+    dispatch(getUserCurrencies());
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // fetch rates based after first user currencies fetch
   useEffect(() => {
-    // eslint-disable-next-line no-console
-    console.log('exchangeRates', exchangeRates);
-  }, [exchangeRates]);
+    if (userCurrencies.length && !exchangeCurrencies.length) {
+      dispatch(getExchangeCurrencies(userCurrencies[0].abbreviation));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userCurrencies]);
+
+  // populate select components with first two user account options;
+  // assume that he needs at least one to access the app
+  useEffect(() => {
+    if (userCurrencies.length
+      && exchangeCurrencies.length
+      && !firstComparingCurrency.abbreviation
+      && !secondComparingCurrency.abbreviation
+    ) {
+      dispatch(setFirstComparingCurrency(userCurrencies[0]));
+      dispatch(setSecondComparingCurrency(userCurrencies[1] || userCurrencies[0]));
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [userCurrencies, exchangeCurrencies]);
+
+  if (!exchangeCurrencies.length || !userCurrencies.length) {
+    return null;
+  }
 
   return (
     <Wrapper>
-      <ExchangeToggle currency={firstCurrency} isSellActive />
-      <ExchangeRate>
-        Exchange rate:
-        {' '}
-        1
-        {firstCurrency.symbol}
-        {' '}
-        =
-        {' '}
-        {secondCurrency.symbol}
-        0.4
-      </ExchangeRate>
-      <Form onSubmit={handleFormSubmit}>
-        <CurrenciesWrapper>
-          <EditableCurrency
-            currency={firstCurrency}
-            balance={accountBalance1}
-            exchangeRates={exchangeRates}
-          />
-          <EditableCurrency
-            currency={secondCurrency}
-            balance={accountBalance2}
-            exchangeRates={exchangeRates}
-          />
-        </CurrenciesWrapper>
-        <SubmitButtonWrapper>
-          <SubmitButton type="submit">
-            Sell
-            {' '}
-            {firstCurrency.abbreviation}
-            {' '}
-            for
-            {' '}
-            {secondCurrency.abbreviation}
-          </SubmitButton>
-        </SubmitButtonWrapper>
-      </Form>
+      <ExchangeToggle currency={firstComparingCurrency} isSellActive />
+      <ExchangeRate />
+      <ExchangeForm />
     </Wrapper>
   );
 };

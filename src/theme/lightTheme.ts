@@ -9,6 +9,7 @@ const lightTheme: DefaultTheme = {
     secondaryText: 'white',
     infoText: '#4d4d4d',
     boxShadow: '#00000026',
+    error: 'red',
   },
 };
 

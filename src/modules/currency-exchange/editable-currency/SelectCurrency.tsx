@@ -58,24 +58,22 @@ const SelectWrapper = styled.div`
 interface Props {
   options: Options<Currency>;
   currency: Currency;
+  onChange: (currency: Currency) => void;
 }
 
-const SelectCurrency: FC<Props> = ({ options, currency }) => {
-  const a = [];
-
-  return (
-    <SelectWrapper>
-      <Select
-        value={currency}
-        options={options}
-        getOptionLabel={(option) => option.abbreviation}
-        getOptionValue={(option) => option.abbreviation}
-        styles={colourStyles}
-        components={{
-          IndicatorSeparator: () => null,
-        }}
-      />
-    </SelectWrapper>
-  );
-};
+const SelectCurrency: FC<Props> = ({ options, currency, onChange }) => (
+  <SelectWrapper>
+    <Select
+      onChange={(selectedCurrency) => onChange(selectedCurrency as Currency)}
+      value={currency}
+      options={options}
+      getOptionLabel={(option) => option.abbreviation}
+      getOptionValue={(option) => option.abbreviation}
+      styles={colourStyles}
+      components={{
+        IndicatorSeparator: () => null,
+      }}
+    />
+  </SelectWrapper>
+);
 export default SelectCurrency;

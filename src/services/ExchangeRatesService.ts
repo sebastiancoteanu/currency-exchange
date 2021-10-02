@@ -10,7 +10,7 @@ const parseExchangeRates = (
       ? SupportedCurrencySymbols[abbreviation as keyof typeof SupportedCurrencySymbols]
       : abbreviation.charAt(0),
     rate,
-    value: '0',
+    value: 0,
   }));
 
 class ExchangeRatesService {
