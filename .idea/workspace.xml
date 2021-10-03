@@ -2,9 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61f0bddb-bf99-4679-8a25-028a42691a0f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/test/currency-calculations.test.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/useFormSubmit.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/useFormSubmit.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/utils/currency-calculations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/utils/currency-calculations.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,13 +25,14 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/modules/user-account" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../DIZERTATIE/teachers_uix" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs.jest.jest_package" value="$PROJECT_DIR$/node_modules/react-scripts" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="D:\Practical Interview\currency-exchange\node_modules\typescript\lib" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -39,6 +42,87 @@
       <recent name="D:\Practical Interview\currency-exchange\src\modules\user-account" />
       <recent name="D:\Practical Interview\currency-exchange\src\theme" />
     </key>
+  </component>
+  <component name="RunManager" selected="Jest.Currency calculations.GetUpdatedBalancesOnExchange">
+    <configuration name="Currency calculations" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/test/currency-calculations.test.ts" />
+      <test-names>
+        <test-name value="Currency calculations" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Currency calculations.Add new currency in account" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/test/currency-calculations.test.ts" />
+      <test-names>
+        <test-name value="Currency calculations" />
+        <test-name value="Add new currency in account" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Currency calculations.GetUpdatedBalancesOnExchange" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="SUITE" />
+      <test-file value="$PROJECT_DIR$/src/test/currency-calculations.test.ts" />
+      <test-names>
+        <test-name value="Currency calculations" />
+        <test-name value="GetUpdatedBalancesOnExchange" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Currency calculations.GetUpdatedBalancesOnExchange.Sell operation" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/test/currency-calculations.test.ts" />
+      <test-names>
+        <test-name value="Currency calculations" />
+        <test-name value="GetUpdatedBalancesOnExchange" />
+        <test-name value="Sell operation" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="Currency calculations.Update existing currency in account" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/test/currency-calculations.test.ts" />
+      <test-names>
+        <test-name value="Currency calculations" />
+        <test-name value="Update existing currency in account" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Jest.Currency calculations.GetUpdatedBalancesOnExchange" />
+        <item itemvalue="Jest.Currency calculations.GetUpdatedBalancesOnExchange.Sell operation" />
+        <item itemvalue="Jest.Currency calculations" />
+        <item itemvalue="Jest.Currency calculations.Add new currency in account" />
+        <item itemvalue="Jest.Currency calculations.Update existing currency in account" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

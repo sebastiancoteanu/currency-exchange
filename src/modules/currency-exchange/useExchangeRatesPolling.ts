@@ -51,12 +51,16 @@ const useExchangeRatesPolling = (): void => {
 
   const pollExchangeRates = async function fetchRates(_?: number) {
     dispatch({ type: REQUEST(ACTION_TYPES.FETCH_EXCHANGE_CURRENCIES) });
-    const exchangeRates = await ExchangeRatesService.fetchRates(currentAbbreviation);
-    dispatch({
-      type: SUCCESS(ACTION_TYPES.FETCH_EXCHANGE_CURRENCIES),
-      payload: exchangeRates,
-    });
-    timeId = setTimeout(fetchRates, EXCHANGE_RATES_POLLING_TIME);
+
+    try {
+      const exchangeRates = await ExchangeRatesService.fetchRates(currentAbbreviation);
+      dispatch({
+        type: SUCCESS(ACTION_TYPES.FETCH_EXCHANGE_CURRENCIES),
+        payload: exchangeRates,
+      });
+    } finally {
+      timeId = setTimeout(fetchRates, EXCHANGE_RATES_POLLING_TIME);
+    }
   };
 };
 
