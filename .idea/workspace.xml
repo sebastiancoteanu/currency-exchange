@@ -2,11 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="61f0bddb-bf99-4679-8a25-028a42691a0f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/modules/currency-exchange/currency-exchange.reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/currency-exchange/editable-currency/InputValue.test.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/SubmitButton.test.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/exchange-form.reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-toggle/ExchangeToggle.test.tsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/modules/user-account/user-account.reducer.test.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/shared/TestingComponentWrapper.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/currency-exchange.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/currency-exchange.reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/editable-currency/InputValue.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/editable-currency/InputValue.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/exchange-form.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/exchange-form.reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/useFormValidation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/useFormValidation.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-toggle/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-toggle/index.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/user-account/user-account.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/user-account/user-account.reducer.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/setupTests.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/setupTests.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/shared/utils/currency-calculations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/utils/currency-calculations.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/currency-calculations.test.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/utils/currency-calculations.test.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,7 +39,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../DIZERTATIE/teachers_uix" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/shared/utils" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -39,89 +53,87 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Practical Interview\currency-exchange\src\shared\utils" />
       <recent name="D:\Practical Interview\currency-exchange\src\modules\user-account" />
       <recent name="D:\Practical Interview\currency-exchange\src\theme" />
     </key>
   </component>
-  <component name="RunManager" selected="Jest.Currency calculations">
-    <configuration name="Currency calculations" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Jest.SubmitButton.Click is not possible when button disable">
+    <configuration name="ExchangeToggle (1)" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/src/test/currency-calculations.test.ts" />
+      <test-file value="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/SubmitButton.test.tsx" />
       <test-names>
-        <test-name value="Currency calculations" />
+        <test-name value="ExchangeToggle" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="Currency calculations.GetComputedFormData" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/src/test/currency-calculations.test.ts" />
-      <test-names>
-        <test-name value="Currency calculations" />
-        <test-name value="GetComputedFormData" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Currency calculations.GetComputedFormData.First input currency value change" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="ExchangeToggle.Click on option and becomes active" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/test/currency-calculations.test.ts" />
+      <test-file value="$PROJECT_DIR$/src/modules/currency-exchange/exchange-toggle/ExchangeToggle.test.tsx" />
       <test-names>
-        <test-name value="Currency calculations" />
-        <test-name value="GetComputedFormData" />
-        <test-name value="First input currency value change" />
+        <test-name value="ExchangeToggle" />
+        <test-name value="Click on option and becomes active" />
       </test-names>
       <method v="2" />
     </configuration>
-    <configuration name="Currency calculations.GetComputedFormData.Second input currency value change" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <node-options value="" />
-      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
-      <working-dir value="$PROJECT_DIR$" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/src/test/currency-calculations.test.ts" />
-      <test-names>
-        <test-name value="Currency calculations" />
-        <test-name value="GetComputedFormData" />
-        <test-name value="Second input currency value change" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Currency calculations.GetUpdatedBalancesOnExchange" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+    <configuration name="SubmitButton" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <node-options value="" />
       <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
       <working-dir value="$PROJECT_DIR$" />
       <envs />
       <scope-kind value="SUITE" />
-      <test-file value="$PROJECT_DIR$/src/test/currency-calculations.test.ts" />
+      <test-file value="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/SubmitButton.test.tsx" />
       <test-names>
-        <test-name value="Currency calculations" />
-        <test-name value="GetUpdatedBalancesOnExchange" />
+        <test-name value="SubmitButton" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="SubmitButton.Click is not possible when button disable" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/SubmitButton.test.tsx" />
+      <test-names>
+        <test-name value="SubmitButton" />
+        <test-name value="Click is not possible when button disable" />
+      </test-names>
+      <method v="2" />
+    </configuration>
+    <configuration name="SubmitButton.Displays two options sell and buy" type="JavaScriptTestRunnerJest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <node-options value="" />
+      <jest-package value="$PROJECT_DIR$/node_modules/react-scripts" />
+      <working-dir value="$PROJECT_DIR$" />
+      <envs />
+      <scope-kind value="TEST" />
+      <test-file value="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/SubmitButton.test.tsx" />
+      <test-names>
+        <test-name value="SubmitButton" />
+        <test-name value="Displays two options sell and buy" />
       </test-names>
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Jest.Currency calculations" />
-        <item itemvalue="Jest.Currency calculations.GetComputedFormData" />
-        <item itemvalue="Jest.Currency calculations.GetComputedFormData.Second input currency value change" />
-        <item itemvalue="Jest.Currency calculations.GetComputedFormData.First input currency value change" />
-        <item itemvalue="Jest.Currency calculations.GetUpdatedBalancesOnExchange" />
+        <item itemvalue="Jest.SubmitButton.Click is not possible when button disable" />
+        <item itemvalue="Jest.SubmitButton.Displays two options sell and buy" />
+        <item itemvalue="Jest.SubmitButton" />
+        <item itemvalue="Jest.ExchangeToggle (1)" />
+        <item itemvalue="Jest.ExchangeToggle.Click on option and becomes active" />
       </list>
     </recent_temporary>
   </component>

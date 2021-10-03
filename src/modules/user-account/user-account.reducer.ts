@@ -8,7 +8,6 @@ export const ACTION_TYPES = {
 };
 
 const initialState = {
-  errorMessage: null,
   userCurrencies: [] as ReadonlyArray<Currency>,
 };
 

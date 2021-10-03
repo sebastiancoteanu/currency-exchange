@@ -3,8 +3,8 @@ import {
   getCurrencyRateByAbbreviation,
   getUpdatedBalancesOnExchange,
   setCurrencyInAccount,
-} from '../shared/utils/currency-calculations';
-import { Currency } from '../modules/currency-exchange/types';
+} from './currency-calculations';
+import { Currency } from '../../modules/currency-exchange/types';
 
 describe('Currency calculations', () => {
   let userCurrencies: Currency[] = [];

@@ -47,8 +47,8 @@ export const getComputedFormData = (
   firstInputChanged: boolean,
   value: string,
   currencyRate: number,
-): Partial<ExchangeFormState['formData']> => {
-  const formData: Partial<ExchangeFormState['formData']> = {};
+): ExchangeFormState['formData'] => {
+  const formData = {} as ExchangeFormState['formData'];
 
   const parsedValue = Number(value);
 

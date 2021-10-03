@@ -7,10 +7,12 @@
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
+    "@types/enzyme": "^3.10.9",
     "@types/jest": "^26.0.15",
     "@types/node": "^12.0.0",
     "@types/react": "^17.0.0",
     "@types/react-dom": "^17.0.0",
+    "@types/react-test-renderer": "^17.0.1",
     "eslint-config-airbnb": "^18.2.1",
     "eslint-import-resolver-typescript": "^2.5.0",
     "react": "^17.0.2",
@@ -18,6 +20,7 @@
     "react-redux": "^7.2.5",
     "react-scripts": "4.0.3",
     "react-select": "^5.0.0",
+    "react-test-renderer": "^17.0.2",
     "redux": "^4.1.1",
     "redux-promise-middleware": "^6.1.2",
     "redux-thunk": "^2.3.0",
@@ -28,9 +31,14 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --detectOpenHandles",
     "eject": "react-scripts eject",
     "generate-icon-font": "fantasticon && eslint ./src/modules/ui-kit/assets/fonts/icons.ts --fix"
+  },
+  "jest": {
+    "snapshotSerializers": [
+      "enzyme-to-json/serializer"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -115,6 +123,9 @@
     ]
   },
   "devDependencies": {
-    "@types/styled-components": "^5.1.14"
+    "@types/styled-components": "^5.1.14",
+    "@wojtekmaj/enzyme-adapter-react-17": "^0.6.3",
+    "enzyme": "^3.11.0",
+    "enzyme-to-json": "^3.6.2"
   }
 }

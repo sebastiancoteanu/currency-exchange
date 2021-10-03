@@ -20,7 +20,7 @@ const exchangeForm = createSlice({
       ...state,
       ...action.payload,
     }),
-    setFormData: (state, action: PayloadAction<Partial<ExchangeFormState['formData']>>) => ({
+    setFormData: (state, action: PayloadAction<ExchangeFormState['formData']>) => ({
       ...state,
       formData: {
         ...state.formData,

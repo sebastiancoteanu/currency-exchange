@@ -76,13 +76,11 @@ const InputValue: FC<Props> = ({ name }) => {
       return;
     }
 
-    const newFormData = getComputedFormData(
+    dispatch(setFormData(getComputedFormData(
       name === FormInputNames.FIRST_COMPARING_CURRENCY,
       value,
       secondComparingCurrency.rate,
-    );
-
-    dispatch(setFormData({ ...newFormData }));
+    )));
   };
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {

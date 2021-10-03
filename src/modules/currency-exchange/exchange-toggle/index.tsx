@@ -11,7 +11,7 @@ const Wrapper = styled.div`
   color: ${({ theme }) => theme.colors.primaryText};
 `;
 
-const Option = styled.div<{ active: boolean }>`
+export const Option = styled.div<{ active: boolean }>`
   font-size: 24px;
   align-self: center;
   cursor: pointer;
