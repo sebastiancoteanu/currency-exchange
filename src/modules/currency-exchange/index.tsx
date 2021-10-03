@@ -35,6 +35,8 @@ const CurrencyExchange: FC = () => {
     (state) => state.userAccount,
   );
 
+  const hasUserCurrencies = !!userCurrencies.length;
+
   const dispatch = useDispatch();
 
   // fetch user currencies on mount
@@ -55,7 +57,7 @@ const CurrencyExchange: FC = () => {
       dispatch(setSecondComparingCurrency(userCurrencies[1] || userCurrencies[0]));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userCurrencies, exchangeCurrencies]);
+  }, [hasUserCurrencies, exchangeCurrencies]);
 
   useExchangeRatesPolling();
 

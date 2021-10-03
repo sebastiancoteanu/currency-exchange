@@ -2,6 +2,7 @@ import { Currency } from '../currency-exchange/types';
 import { FAILURE, REQUEST, SUCCESS } from '../../shared/reducers/action-type.util';
 import { fetchUserCurrencies } from '../../shared/utils/request-faker';
 import { GetUserCurrenciesAction, SetBalanceByCurrencyAction } from './types';
+import { setCurrencyInAccount } from '../../shared/utils/currency-calculations';
 
 export const ACTION_TYPES = {
   FETCH_USER_CURRENCIES: 'userAccount/FETCH_USER_CURRENCIES',
@@ -40,10 +41,7 @@ export default (state: UserAccountState = initialState, action: any): UserAccoun
     case ACTION_TYPES.SET_BALANCE_BY_CURRENCY:
       return {
         ...state,
-        userCurrencies: state.userCurrencies.map((currency) => ({
-          ...currency,
-          value: action.payload.abbreviation === currency.abbreviation ? action.payload.value : currency.value,
-        })),
+        userCurrencies: setCurrencyInAccount(action.payload, state.userCurrencies as Currency[]),
       };
     default:
       return state;

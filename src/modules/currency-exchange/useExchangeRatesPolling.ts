@@ -23,8 +23,12 @@ const useExchangeRatesPolling = (): void => {
     (state) => state.userAccount,
   );
 
+  const hasUserCurrencies = !!userCurrencies.length;
+
+  // get currency abbreviation when first currency changes or when user currencies are loaded
   const currentAbbreviation = useMemo(() => firstComparingCurrency.abbreviation || userCurrencies[0]?.abbreviation,
-    [userCurrencies, firstComparingCurrency]);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [hasUserCurrencies, firstComparingCurrency]);
 
   useEffect(() => () => {
     clearTimeout(timeId);
@@ -32,6 +36,8 @@ const useExchangeRatesPolling = (): void => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   []);
 
+  // start polling exchange rates when current abbreviation changes;
+  // cancel previous poll
   useEffect(() => {
     if (currentAbbreviation) {
       pollExchangeRates();
