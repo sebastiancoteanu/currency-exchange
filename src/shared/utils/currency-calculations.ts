@@ -1,5 +1,4 @@
 import { Currency } from '../../modules/currency-exchange/types';
-import { FormInputNames } from '../../modules/currency-exchange/exchange-form/types';
 import { ExchangeFormState } from '../../modules/currency-exchange/exchange-form/exchange-form.reducer';
 
 export const getCurrencyRateByAbbreviation = (

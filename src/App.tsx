@@ -4,9 +4,9 @@ import { ThemeProvider } from 'styled-components';
 import { Provider } from 'react-redux';
 import CurrencyExchange from './modules/currency-exchange';
 import lightTheme from './theme/lightTheme';
-import initialize from './config/store';
+import configureAppStore from './config/store';
 
-const store = initialize();
+const store = configureAppStore();
 
 const App: FC = () => (
   <div className="App">

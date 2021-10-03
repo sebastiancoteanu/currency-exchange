@@ -4,10 +4,11 @@ import React, {
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { EXCHANGE_VALUE_REGEX } from '../../../constants';
-import { ExchangeFormState, setFormData } from '../exchange-form/exchange-form.reducer';
+import { setFormData } from '../exchange-form/exchange-form.reducer';
 import { IRootState } from '../../../shared/reducers';
 import useFormValidation from '../useFormValidation';
 import { FormInputNames } from '../exchange-form/types';
+import { getComputedFormData } from '../../../shared/utils/currency-calculations';
 
 const Input = styled.input`
   flex: 1;
@@ -71,23 +72,15 @@ const InputValue: FC<Props> = ({ name }) => {
   };
 
   const updateFormData = (value: string) => {
-    const newFormData = {
-      [name]: value,
-    } as Partial<ExchangeFormState['formData']>;
-
     if (!secondComparingCurrency.rate) {
       return;
     }
 
-    const parsedValue = Number(value);
-
-    if (name === FormInputNames.FIRST_COMPARING_CURRENCY) {
-      newFormData.secondComparingCurrencyValue = String(+(parsedValue
-        * (secondComparingCurrency.rate as number)).toFixed(2));
-    } else {
-      newFormData.firstComparingCurrencyValue = String(+(parsedValue
-        / (secondComparingCurrency.rate as number)).toFixed(2));
-    }
+    const newFormData = getComputedFormData(
+      name === FormInputNames.FIRST_COMPARING_CURRENCY,
+      value,
+      secondComparingCurrency.rate,
+    );
 
     dispatch(setFormData({ ...newFormData }));
   };

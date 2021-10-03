@@ -1,10 +1,5 @@
-import { BaseAction } from '../../../shared/reducers/types';
+import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { FormInputNames } from './types';
-
-export const ACTION_TYPES = {
-  SET_FORM_ERROR: 'currencyExchangeForm/SET_FORM_ERROR',
-  SET_FORM_DATA: 'currencyExchangeForm/SET_FORM_DATA',
-};
 
 const initialState = {
   errorMessage: '',
@@ -17,33 +12,29 @@ const initialState = {
 
 export type ExchangeFormState = Readonly<typeof initialState>;
 
-// eslint-disable-next-line
-export default (state: ExchangeFormState = initialState, action: any): ExchangeFormState => {
-  switch (action.type) {
-    case ACTION_TYPES.SET_FORM_ERROR:
-      return {
+const exchangeForm = createSlice({
+  name: 'exchangeForm',
+  initialState,
+  reducers: {
+    setFormError(state, action: PayloadAction<Partial<ExchangeFormState>>) {
+      // eslint-disable-next-line no-param-reassign
+      state = {
         ...state,
         ...action.payload,
       };
-    case ACTION_TYPES.SET_FORM_DATA:
-      return {
-        ...state,
-        formData: {
-          ...state.formData,
-          ...action.payload,
-        },
+    },
+    setFormData(state, action: PayloadAction<Partial<ExchangeFormState['formData']>>) {
+      // eslint-disable-next-line no-param-reassign
+      state.formData = {
+        ...state.formData,
+        ...action.payload,
       };
-    default:
-      return state;
-  }
-};
-
-export const setFormError: BaseAction<Partial<ExchangeFormState>> = (formError) => ({
-  type: ACTION_TYPES.SET_FORM_ERROR,
-  payload: formError,
+    },
+  },
 });
 
-export const setFormData: BaseAction<Partial<ExchangeFormState['formData']>> = (values) => ({
-  type: ACTION_TYPES.SET_FORM_DATA,
-  payload: values,
-});
+const { actions, reducer } = exchangeForm;
+
+export const { setFormData, setFormError } = actions;
+
+export default reducer;

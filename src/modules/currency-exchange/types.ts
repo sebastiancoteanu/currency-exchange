@@ -2,7 +2,7 @@ import { Dispatch } from 'redux';
 import { Payload } from '../../shared/reducers/types';
 
 export interface Currency {
-  symbol: CurrencySymbol;
+  symbol?: CurrencySymbol;
   abbreviation: string;
   value: number;
   rate?: number;

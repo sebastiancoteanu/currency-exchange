@@ -1,9 +1,7 @@
 import { useEffect, useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ACTION_TYPES } from './currency-exchange.reducer';
+import { getExchangeCurrencies } from './currency-exchange.reducer';
 import { IRootState } from '../../shared/reducers';
-import ExchangeRatesService from '../../services/ExchangeRatesService';
-import { REQUEST, SUCCESS } from '../../shared/reducers/action-type.util';
 import { EXCHANGE_RATES_POLLING_TIME } from '../../constants';
 
 let timeId = 0;
@@ -50,17 +48,8 @@ const useExchangeRatesPolling = (): void => {
   }, [currentAbbreviation]);
 
   const pollExchangeRates = async function fetchRates(_?: number) {
-    dispatch({ type: REQUEST(ACTION_TYPES.FETCH_EXCHANGE_CURRENCIES) });
-
-    try {
-      const exchangeRates = await ExchangeRatesService.fetchRates(currentAbbreviation);
-      dispatch({
-        type: SUCCESS(ACTION_TYPES.FETCH_EXCHANGE_CURRENCIES),
-        payload: exchangeRates,
-      });
-    } finally {
-      timeId = setTimeout(fetchRates, EXCHANGE_RATES_POLLING_TIME);
-    }
+    dispatch(getExchangeCurrencies(currentAbbreviation));
+    timeId = setTimeout(fetchRates, EXCHANGE_RATES_POLLING_TIME);
   };
 };
 
