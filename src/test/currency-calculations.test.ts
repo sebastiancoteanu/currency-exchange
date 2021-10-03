@@ -1,4 +1,5 @@
 import {
+  getComputedFormData,
   getCurrencyRateByAbbreviation,
   getUpdatedBalancesOnExchange,
   setCurrencyInAccount,
@@ -141,6 +142,22 @@ describe('Currency calculations', () => {
         1000,
         2000,
       )).toEqual([5000, 1000]);
+    });
+  });
+
+  describe('GetComputedFormData', () => {
+    test('First input currency value change', () => {
+      expect(getComputedFormData(true, '2000', 2)).toEqual({
+        firstComparingCurrencyValue: '2000',
+        secondComparingCurrencyValue: '4000',
+      });
+    });
+
+    test('Second input currency value change', () => {
+      expect(getComputedFormData(false, '2000', 2)).toEqual({
+        firstComparingCurrencyValue: '1000',
+        secondComparingCurrencyValue: '2000',
+      });
     });
   });
 });

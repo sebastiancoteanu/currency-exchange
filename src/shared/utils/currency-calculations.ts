@@ -1,4 +1,6 @@
 import { Currency } from '../../modules/currency-exchange/types';
+import { FormInputNames } from '../../modules/currency-exchange/exchange-form/types';
+import { ExchangeFormState } from '../../modules/currency-exchange/exchange-form/exchange-form.reducer';
 
 export const getCurrencyRateByAbbreviation = (
   currencies: Currency[],
@@ -40,4 +42,26 @@ export const getUpdatedBalancesOnExchange = (
     : secondCurrencyBalance - secondComputedExchangeValue;
 
   return [firstBalanceAfterExchange, secondBalanceAfterExchange];
+};
+
+export const getComputedFormData = (
+  firstInputChanged: boolean,
+  value: string,
+  currencyRate: number,
+): Partial<ExchangeFormState['formData']> => {
+  const formData: Partial<ExchangeFormState['formData']> = {};
+
+  const parsedValue = Number(value);
+
+  if (firstInputChanged) {
+    formData.firstComparingCurrencyValue = value;
+    formData.secondComparingCurrencyValue = String(+(parsedValue
+      * currencyRate).toFixed(2));
+  } else {
+    formData.firstComparingCurrencyValue = String(+(parsedValue
+      / currencyRate).toFixed(2));
+    formData.secondComparingCurrencyValue = value;
+  }
+
+  return formData;
 };
