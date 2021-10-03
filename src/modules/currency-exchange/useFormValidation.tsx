@@ -11,7 +11,7 @@ interface ReturnData {
 type Hook = () => ReturnData;
 
 const useFormValidation: Hook = () => {
-  const { formData } = useSelector<IRootState, IRootState['exchangeForm']>(
+  const { formData, submitDisabled } = useSelector<IRootState, IRootState['exchangeForm']>(
     (state) => state.exchangeForm,
   );
 
@@ -42,7 +42,9 @@ const useFormValidation: Hook = () => {
       return;
     }
 
-    dispatch(setFormError({ submitDisabled: false, errorMessage: '' }));
+    if (submitDisabled) {
+      dispatch(setFormError({ submitDisabled: false, errorMessage: '' }));
+    }
   };
 
   return {

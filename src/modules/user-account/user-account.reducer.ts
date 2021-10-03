@@ -23,16 +23,16 @@ const userAccount = createSlice({
   name: 'userAccount',
   initialState,
   reducers: {
-    setBalanceByCurrency(state, action: PayloadAction<Currency>) {
-      // eslint-disable-next-line no-param-reassign
-      state.userCurrencies = [...setCurrencyInAccount(action.payload, state.userCurrencies as Currency[])];
-    },
+    setBalanceByCurrency: (state, action: PayloadAction<Currency>) => ({
+      ...state,
+      userCurrencies: [...setCurrencyInAccount(action.payload, state.userCurrencies as Currency[])],
+    }),
   },
   extraReducers: (builder) => {
-    builder.addCase(getUserCurrencies.fulfilled, (state, action) => {
-      // eslint-disable-next-line no-param-reassign
-      state.userCurrencies = [...action.payload];
-    });
+    builder.addCase(getUserCurrencies.fulfilled, (state, action) => ({
+      ...state,
+      userCurrencies: action.payload,
+    }));
   },
 });
 

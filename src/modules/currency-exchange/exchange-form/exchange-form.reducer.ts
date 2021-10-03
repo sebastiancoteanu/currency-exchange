@@ -16,20 +16,17 @@ const exchangeForm = createSlice({
   name: 'exchangeForm',
   initialState,
   reducers: {
-    setFormError(state, action: PayloadAction<Partial<ExchangeFormState>>) {
-      // eslint-disable-next-line no-param-reassign
-      state = {
-        ...state,
-        ...action.payload,
-      };
-    },
-    setFormData(state, action: PayloadAction<Partial<ExchangeFormState['formData']>>) {
-      // eslint-disable-next-line no-param-reassign
-      state.formData = {
+    setFormError: (state, action: PayloadAction<Pick<ExchangeFormState, 'errorMessage' | 'submitDisabled'>>) => ({
+      ...state,
+      ...action.payload,
+    }),
+    setFormData: (state, action: PayloadAction<Partial<ExchangeFormState['formData']>>) => ({
+      ...state,
+      formData: {
         ...state.formData,
         ...action.payload,
-      };
-    },
+      },
+    }),
   },
 });
 

@@ -3,18 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="61f0bddb-bf99-4679-8a25-028a42691a0f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/config/store.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/config/store.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/currency-exchange.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/currency-exchange.reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/editable-currency/InputValue.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/editable-currency/InputValue.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/exchange-form.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/exchange-form/exchange-form.reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/types.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/useExchangeRatesPolling.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/useExchangeRatesPolling.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/modules/currency-exchange/useFormValidation.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/currency-exchange/useFormValidation.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/modules/user-account/user-account.reducer.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/modules/user-account/user-account.reducer.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/shared/utils/currency-calculations.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/shared/utils/currency-calculations.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
