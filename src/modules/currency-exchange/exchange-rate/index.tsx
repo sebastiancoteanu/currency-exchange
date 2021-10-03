@@ -19,17 +19,12 @@ const ExchangeRate: FC = () => {
     (state) => state.currencyExchange,
   );
 
+  const computedExchangeRateText = `Exchange rate: ${firstComparingCurrency.symbol}1 = 
+  ${secondComparingCurrency.symbol}${secondComparingCurrency.rate}`;
+
   return (
     <Wrapper>
-      Exchange rate:
-      {' '}
-      {firstComparingCurrency.symbol}
-      1
-      {' '}
-      =
-      {' '}
-      {secondComparingCurrency.symbol}
-      {secondComparingCurrency.rate}
+      {computedExchangeRateText}
     </Wrapper>
   );
 };

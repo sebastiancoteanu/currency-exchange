@@ -26,11 +26,11 @@ const AccountBalance: FC<Props> = ({ abbreviation }) => {
     .find((currency) => currency.abbreviation === abbreviation)?.value || 0,
   [abbreviation, userCurrencies]);
 
+  const balanceText = `Balance: ${totalBalance}`;
+
   return (
     <Wrapper>
-      Balance:
-      {' '}
-      {totalBalance}
+      {balanceText}
     </Wrapper>
   );
 };

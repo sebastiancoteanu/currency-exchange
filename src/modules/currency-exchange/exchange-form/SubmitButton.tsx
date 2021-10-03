@@ -47,13 +47,13 @@ const SubmitButton: FC = () => {
     (state) => state.currencyExchange,
   );
 
+  const buttonText = `${isSellActive ? 'Sell' : 'Buy'} ${firstComparingCurrency.abbreviation} 
+    ${isSellActive ? 'for' : 'with'} ${secondComparingCurrency.abbreviation}`;
+
   return (
     <Wrapper>
       <CustomButton type="submit" disabled={submitDisabled}>
-        {isSellActive ? 'Sell ' : 'Buy '}
-        {firstComparingCurrency.abbreviation}
-        {isSellActive ? ' for ' : ' with '}
-        {secondComparingCurrency.abbreviation}
+        {buttonText}
       </CustomButton>
     </Wrapper>
   );
